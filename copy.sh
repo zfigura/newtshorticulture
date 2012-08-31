@@ -1,3 +1,4 @@
+#!/bin/bash
 mkdir -pv src/common
 mkdir -pv src/minecraft
 mkdir -pv textures
