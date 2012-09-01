@@ -44,8 +44,8 @@ public final class modnh{
 	//First, a few constants that have little/no effect on the code.
 	public static final String modid = "horticulture";
 	public static final String shortName = "Newt's Horticulture";
-	public static final String version = "Aleph Two";
-	public static final String UEVersionRequired = "0.6.0";
+	public static final String version = "Aleph Three";
+	public static final String UEVersionRequired = "0.7.0";
 	
 	@Instance
 	public static modnh instance;
