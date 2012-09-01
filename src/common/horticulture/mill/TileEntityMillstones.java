@@ -1,22 +1,36 @@
 package horticulture.mill;
 
+import horticulture.modnh;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
+import net.minecraft.src.NBTTagCompound;
+import net.minecraft.src.NBTTagList;
 import net.minecraft.src.NetworkManager;
 import net.minecraft.src.Packet250CustomPayload;
 import net.minecraft.src.TileEntity;
-import net.minecraft.src.World;
 import universalelectricity.network.IPacketReceiver;
 
 import com.google.common.io.ByteArrayDataInput;
 
 public class TileEntityMillstones extends TileEntity implements IPacketReceiver,IInventory{
 
+	public static final int grindingTicksNeeded = 180;
+	public int grindingTicks = 0;
+	private boolean sendPacketToClients = false;
 	private ItemStack[] inv = new ItemStack[2];
 
 	@Override
 	public void handlePacketData(NetworkManager network, Packet250CustomPayload packet, EntityPlayer player, ByteArrayDataInput dataStream){
+		int id = dataStream.readInt();
+		switch(id){
+		case -1:
+			this.sendPacketToClients = dataStream.readBoolean();
+			break;
+		case 1:
+			this.grindingTicks = dataStream.readInt();
+		}
 	}
 
 	@Override
@@ -88,5 +102,64 @@ public class TileEntityMillstones extends TileEntity implements IPacketReceiver,
 
 	@Override
 	public void closeChest(){
+	}
+	
+	@Override
+	public void readFromNBT(NBTTagCompound ntc){
+		super.readFromNBT(ntc);
+		this.grindingTicks = ntc.getInteger("grindingTicks");
+		NBTTagList list = ntc.getTagList("Items");
+		this.inv = new ItemStack[this.getSizeInventory()];
+		for(int i=0;i<list.tagCount();++i){
+			NBTTagCompound ntc2 = (NBTTagCompound) list.tagAt(i);
+			byte b = ntc2.getByte("Slot");
+			if((b >= 0)&&(b < this.inv.length))	{
+				this.inv[b] = ItemStack.loadItemStackFromNBT(ntc2);
+			}
+		}
+	}
+	
+	@Override
+	public void writeToNBT(NBTTagCompound ntc){
+		super.writeToNBT(ntc);
+		ntc.setInteger("grindingTicks", this.grindingTicks);
+		NBTTagList list = new NBTTagList();
+		for(int i=0;i<inv.length;++i){
+			if(this.inv[i] != null){
+				NBTTagCompound ntc2 = new NBTTagCompound();
+				ntc2.setByte("Slot", (byte)i);
+				this.inv[i].writeToNBT(ntc2);
+				list.appendTag(ntc2);
+			}
+		}
+		ntc.setTag("Items", list);
+	}
+	
+	@Override
+	public void updateEntity(){
+		super.updateEntity();
+		if(this.grindingTicks > 0){ //We have work. This should NOT be 180.
+			++this.grindingTicks;
+			if(this.grindingTicks == grindingTicksNeeded){
+				if(this.getStackInSlot(1) == null){
+					this.setInventorySlotContents(1, new ItemStack(modnh.itemFlour,3));
+				}else{
+					this.getStackInSlot(1).stackSize += 3;
+				}
+				this.grindingTicks = 0;
+			}
+		}
+		if(this.grindingTicks == 0){ //We aren't working, or we just finished
+			ItemStack stack = this.getStackInSlot(0);
+			if(stack == null) return;
+			if(stack.itemID == Item.wheat.shiftedIndex){
+				ItemStack out = this.getStackInSlot(1);
+				if(out != null){
+					if(out.stackSize+3 > 64) return;
+				}
+				this.decrStackSize(0, 1);
+				this.grindingTicks = 1;
+			}
+		}
 	}
 }

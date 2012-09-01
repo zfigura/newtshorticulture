@@ -1,7 +1,6 @@
 package horticulture;
 
 import horticulture.mill.BlockMillstones;
-import horticulture.mill.TileEntityMillstones;
 import horticulture.trees.BlockFruitLeaves;
 import horticulture.trees.BlockFruitLog;
 import horticulture.trees.BlockFruitSapling;
@@ -22,7 +21,6 @@ import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraftforge.common.Configuration;
 import universalelectricity.UniversalElectricity;
-import universalelectricity.extend.CommonProxy;
 import universalelectricity.recipe.RecipeManager;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
@@ -38,19 +36,19 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
  * 
  * @author ObsequiousNewt
  */
-@Mod(modid=modnh.modid,name=modnh.shortName,version=modnh.version,dependencies="after:UniversalElectricity")
+@Mod(modid=modnh.modid,name=modnh.shortName,version=modnh.version,dependencies="after:BasicComponents")
 @NetworkMod(clientSideRequired=true,serverSideRequired=false)
 public final class modnh{
 	//First, a few constants that have little/no effect on the code.
 	public static final String modid = "horticulture";
 	public static final String shortName = "Newt's Horticulture";
 	public static final String version = "Aleph Two";
-	public static final String UEVersionRequired = "0.6.0";
+	public static final String UEVersionRequired = "0.7.0";
 	
 	@Instance
 	public static modnh instance;
 	@SidedProxy(clientSide="horticulture.NHClientProxy")
-	public static CommonProxy proxy;
+	public static NHCommonProxy proxy;
     public static final Configuration config = new Configuration(new File("config/UniversalElectricity/NewtsHorticulture.cfg"));
     public static final NHCraftingHandler craftingHandler = new NHCraftingHandler();
 	
@@ -97,7 +95,7 @@ public final class modnh{
 		GameRegistry.registerBlock(blockFruitSapling, ItemBlockFruitSapling.class);
 		GameRegistry.registerBlock(blockFruitSapling2, ItemBlockFruitSapling.class);
 		GameRegistry.registerBlock(blockFruitLog);
-		GameRegistry.registerTileEntity(TileEntityMillstones.class, "TileEntityMillstones");
+//		GameRegistry.registerTileEntity(TileEntityMillstones.class, "TileEntityMillstones");
 		GameRegistry.registerWorldGenerator(new GeneratorFruitTrees());
 		LanguageRegistry.addName(itemExplodingLemon, "Lemon");
 		LanguageRegistry.addName(blockMillstones, "Millstones");
