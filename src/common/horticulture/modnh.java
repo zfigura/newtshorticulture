@@ -38,7 +38,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
  * 
  * @author ObsequiousNewt
  */
-@Mod(modid=modnh.modid,name=modnh.shortName,version=modnh.version,dependencies="after:UniversalElectricity")
+@Mod(modid=modnh.modid,name=modnh.shortName,version=modnh.version,dependencies="after:BasicComponenets")
 @NetworkMod(clientSideRequired=true,serverSideRequired=false)
 public final class modnh{
 	//First, a few constants that have little/no effect on the code.
