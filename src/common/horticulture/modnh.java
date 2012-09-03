@@ -1,6 +1,7 @@
 package horticulture;
 
 import horticulture.mill.BlockMillstones;
+import horticulture.tractors.EntityTractor;
 import horticulture.trees.BlockFruitLeaves;
 import horticulture.trees.BlockFruitLog;
 import horticulture.trees.BlockFruitSapling;
@@ -19,6 +20,8 @@ import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
+import net.minecraft.src.ModLoader;
+import net.minecraft.src.StringTranslate;
 import net.minecraftforge.common.Configuration;
 import universalelectricity.UniversalElectricity;
 import universalelectricity.recipe.RecipeManager;
@@ -47,7 +50,7 @@ public final class modnh{
 	
 	@Instance
 	public static modnh instance;
-	@SidedProxy(clientSide="horticulture.NHClientProxy")
+	@SidedProxy(clientSide="horticulture.NHClientProxy",serverSide="horticulture.NHCommonProxy")
 	public static NHCommonProxy proxy;
     public static final Configuration config = new Configuration(new File("config/UniversalElectricity/NewtsHorticulture.cfg"));
     public static final NHCraftingHandler craftingHandler = new NHCraftingHandler();
@@ -87,7 +90,7 @@ public final class modnh{
 		RecipeManager.addShapelessRecipe(blockMillstones,new Object[]{itemChisel,Block.stoneSingleSlab,Block.stoneSingleSlab});
 		RecipeManager.addShapelessRecipe(blockFruitLeaves,new Object[]{itemChisel});
 		RecipeManager.addShapelessRecipe(itemExplodingLemon, new Object[]{Block.tnt,new ItemStack(itemFruit,1,11)});
-		RecipeManager.addShapelessRecipe(new ItemStack(Block.planks,2,0),new Object[]{blockFruitLog});
+		RecipeManager.addShapelessRecipe(new ItemStack(Block.planks,2),new Object[]{blockFruitLog});
 		GameRegistry.registerCraftingHandler(craftingHandler);
 		GameRegistry.registerBlock(blockMillstones);
 		GameRegistry.registerBlock(blockFruitLeaves, ItemBlockFruitLeaves.class);
@@ -99,10 +102,14 @@ public final class modnh{
 		GameRegistry.registerWorldGenerator(new GeneratorFruitTrees());
 		LanguageRegistry.addName(itemExplodingLemon, "Lemon");
 		LanguageRegistry.addName(blockMillstones, "Millstones");
+		ModLoader.registerEntityID(EntityTractor.class, "Tractor", 0);
 		NetworkRegistry.instance().registerGuiHandler(this, this.proxy);
+		
+		StringTranslate.getInstance().getLanguageList().put("la_RM", "Latina");
 		for(int i=0;i<16;++i){
 			LanguageRegistry.addName(new ItemStack(blockFruitLeaves,1,i), treeFruits[i]+" Tree Branch");
 			LanguageRegistry.addName(new ItemStack(blockFruitSapling,1,i), treeFruits[i]+" Tree Sapling");
+//			LanguageRegistry.instance().addNameForObject(objectToName, lang, name)
 		}
 		for(int i=16;i<treeFruits.length;++i){
 			LanguageRegistry.addName(new ItemStack(blockFruitLeaves2,1,i-16), treeFruits[i]+" Tree Branch");
@@ -111,6 +118,7 @@ public final class modnh{
 		for(int i=0;i<allFruits.length;++i){
 			LanguageRegistry.addName(new ItemStack(itemFruit,1,i), (String) allFruits[i]);
 		}
+		System.out.println("Now comes with built-in Latin support!");
 	}
 	
 	public modnh getInstance(){
