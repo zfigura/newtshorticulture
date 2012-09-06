@@ -1,12 +1,10 @@
 package horticulture.trees;
 
-import horticulture.BlockNH;
+import horticulture.BlockDisplaced;
 import horticulture.modnh;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 import net.minecraft.src.Block;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.ItemStack;
@@ -14,10 +12,8 @@ import net.minecraft.src.Material;
 import net.minecraft.src.World;
 import net.minecraftforge.common.IShearable;
 
-public class BlockFruitLeaves extends BlockNH implements IShearable{
+public class BlockFruitLeaves extends BlockDisplaced{
 
-	public int displacement = 0;
-	
 	public int[] adjacentBlocks;
 
 	public BlockFruitLeaves(int id){
@@ -65,7 +61,6 @@ public class BlockFruitLeaves extends BlockNH implements IShearable{
 	
 	@Override
 	public ArrayList<ItemStack> getBlockDropped(World w, int x, int y, int z, int metadata, int fortune){
-		//TODO: Why is metadata 0?
 		ArrayList<ItemStack> q = new ArrayList<ItemStack>();
 		if(w.rand.nextInt(20) < 2+fortune){
 			q.add(new ItemStack(((displacement == 0) ? modnh.blockFruitSapling : modnh.blockFruitSapling2),1,this.damageDropped(metadata)));
@@ -75,23 +70,7 @@ public class BlockFruitLeaves extends BlockNH implements IShearable{
 		}
 		return q;
 	}
-	
-	@Override
-	public boolean isShearable(ItemStack i, World w, int x, int y, int z){
-		return true;
-	}
 
-	@Override
-	public ArrayList<ItemStack> onSheared(ItemStack item, World world, int x, int y, int z, int fortune) {
-		ArrayList<ItemStack> q = new ArrayList<ItemStack>();
-		q.add(new ItemStack(this,1,world.getBlockMetadata(x, y, z)));
-		return q;
-	}
-
-	public void setDisplaced(){
-		this.displacement = 16;
-	}
-	
 	//Difficult leaf block code... bleh.
 	@Override
 	public void updateTick(World w, int x, int y, int z, Random r){

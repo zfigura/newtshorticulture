@@ -45,15 +45,16 @@ public final class modnh{
 	//First, a few constants that have little/no effect on the code.
 	public static final String modid = "horticulture";
 	public static final String shortName = "Newt's Horticulture";
-	public static final String version = "Aleph Four";
+	public static final String version = "Aleph 4.1";
 	public static final String UEVersionRequired = "0.7.0";
 	
+	//Now some universal single-instance miscellaneous shtuff.
 	@Instance
-	public static modnh instance;
+	private static modnh instance;
 	@SidedProxy(clientSide="horticulture.NHClientProxy",serverSide="horticulture.NHCommonProxy")
 	public static NHCommonProxy proxy;
-    public static final Configuration config = new Configuration(new File("config/UniversalElectricity/NewtsHorticulture.cfg"));
-    public static final NHCraftingHandler craftingHandler = new NHCraftingHandler();
+	public static final Configuration config = new Configuration(new File("config/UniversalElectricity/NewtsHorticulture.cfg"));
+	public static final NHCraftingHandler craftingHandler = new NHCraftingHandler();
 	
 	//Items and Blocks. NH uses 0x4d00-e00 for items (19712-968) and 0x4c0-500 for blocks (1216-80)
 	public static final Item itemChisel = new ItemChisel(getItemID("itemChisel",0x4d00));
@@ -66,8 +67,10 @@ public final class modnh{
 	public static final BlockFruitSapling blockFruitSapling = new BlockFruitSapling(getBlockID("blockFruitSapling",0x4c3));
 	public static final BlockFruitSapling blockFruitSapling2 = new BlockFruitSapling(getBlockID("blockFruitSapling2",0x4c4));
 	public static final BlockFruitLog blockFruitLog = new BlockFruitLog(getBlockID("blockFruitLog",0x4c5));
+	public static final BlockFruitHanging blockFruitHanging = new BlockFruitHanging(getBlockID("blockFruitHanging",0x4c6));
+	public static final BlockFruitHanging blockFruitHanging2 = new BlockFruitHanging(getBlockID("blockFruitHanging2",0x4c7));
 	
-	public static final String[] treeFruits = {"Apple","Pear","Apricot","Cherry","Peach","Plum","Mulberry","Date","Fig","Pomegranate","Kumquat","Lemon","Lime","Orange","Banana","Coconut","Mango","Olive","Pecan"};//,"res5","res6","res7","res8","res9","res10","res11","res12","res13","res14","res15","res16"};
+	public static final String[] treeFruits = {"Apple","Pear","Apricot","Cherry","Peach","Plum","Mulberry","Date","Fig","Pomegranate","Kumquat","Lemon","Lime","Orange","Banana","Coconut","Mango","Olive","Pecan"};
 	public static final String[] vineFruits = {"Grape","Honeydew","Vanilla","Cantaloupe"};
 	public static final String[] flowerFruits = {"Strawberry","Peanut","Allspice","Blackberry","Blueberry","Cranberry","Pineapple"};
 	public static final Object[] allFruits;
@@ -80,6 +83,7 @@ public final class modnh{
 		allFruits = q.toArray();
 		blockFruitLeaves2.setDisplaced();
 		blockFruitSapling2.setDisplaced();
+		blockFruitHanging2.setDisplaced();
 	}
 	
 	@Init
@@ -88,7 +92,6 @@ public final class modnh{
 		UniversalElectricity.registerMod(this, shortName, UEVersionRequired);
 		RecipeManager.addRecipe(itemChisel, new Object[]{"!","\"",'!',Item.stick,'"',Item.ingotIron});
 		RecipeManager.addShapelessRecipe(blockMillstones,new Object[]{itemChisel,Block.stoneSingleSlab,Block.stoneSingleSlab});
-		RecipeManager.addShapelessRecipe(blockFruitLeaves,new Object[]{itemChisel});
 		RecipeManager.addShapelessRecipe(itemExplodingLemon, new Object[]{Block.tnt,new ItemStack(itemFruit,1,11)});
 		RecipeManager.addShapelessRecipe(new ItemStack(Block.planks,2),new Object[]{blockFruitLog});
 		GameRegistry.registerCraftingHandler(craftingHandler);
@@ -98,7 +101,7 @@ public final class modnh{
 		GameRegistry.registerBlock(blockFruitSapling, ItemBlockFruitSapling.class);
 		GameRegistry.registerBlock(blockFruitSapling2, ItemBlockFruitSapling.class);
 		GameRegistry.registerBlock(blockFruitLog);
-//		GameRegistry.registerTileEntity(TileEntityMillstones.class, "TileEntityMillstones");
+		//		GameRegistry.registerTileEntity(TileEntityMillstones.class, "TileEntityMillstones");
 		GameRegistry.registerWorldGenerator(new GeneratorFruitTrees());
 		LanguageRegistry.addName(itemExplodingLemon, "Lemon");
 		LanguageRegistry.addName(blockMillstones, "Millstones");
@@ -109,7 +112,7 @@ public final class modnh{
 		for(int i=0;i<16;++i){
 			LanguageRegistry.addName(new ItemStack(blockFruitLeaves,1,i), treeFruits[i]+" Tree Branch");
 			LanguageRegistry.addName(new ItemStack(blockFruitSapling,1,i), treeFruits[i]+" Tree Sapling");
-//			LanguageRegistry.instance().addNameForObject(objectToName, lang, name)
+			//			LanguageRegistry.instance().addNameForObject(objectToName, lang, name)
 		}
 		for(int i=16;i<treeFruits.length;++i){
 			LanguageRegistry.addName(new ItemStack(blockFruitLeaves2,1,i-16), treeFruits[i]+" Tree Branch");
@@ -121,14 +124,14 @@ public final class modnh{
 		System.out.println("Now comes with built-in Latin support!");
 	}
 	
-	public modnh getInstance(){
+	public static modnh getInstance(){
 		return instance;
 	}
 	
 	public static int getItemID(String name,int def){
 		return UniversalElectricity.getItemConfigID(config, name, def);
 	}
-
+	
 	public static int getBlockID(String name,int def){
 		return UniversalElectricity.getBlockConfigID(config, name, def);
 	}

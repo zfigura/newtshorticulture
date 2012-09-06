@@ -70,7 +70,7 @@ public class BlockMillstones extends BlockContainer{
 	
 	@Override
 	public boolean onBlockActivated(World w, int x, int y, int z, EntityPlayer p, int side, float q, float r, float s){
-		p.openGui(modnh.instance, 0, w, x, y, z);
+		p.openGui(modnh.getInstance(), 0, w, x, y, z);
 		return true;
 	}
 }

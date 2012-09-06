@@ -1,12 +1,12 @@
 package horticulture.trees;
 
+import horticulture.BlockDisplaced;
 import horticulture.BlockNH;
+import horticulture.IDisplaceable;
 import horticulture.modnh;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.Block;
 import net.minecraft.src.CreativeTabs;
@@ -16,11 +16,9 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
 import net.minecraft.src.World;
 
-public class BlockFruitSapling extends BlockNH{
+public class BlockFruitSapling extends BlockDisplaced implements IDisplaceable{
 
-	public int displacement = 0;
-
-	public BlockFruitSapling(int id){
+public BlockFruitSapling(int id){
 		super(id,Material.plants);
 		this.setTickRandomly(true);
 		this.setCreativeTab(CreativeTabs.tabDeco);
@@ -75,7 +73,7 @@ public class BlockFruitSapling extends BlockNH{
 
 	@Override
 	public void getSubBlocks(int id, CreativeTabs tabs, List list){
-		int q = ((displacement == 16) ? modnh.treeFruits.length : 16);
+		int q = (isDisplaced() ? modnh.treeFruits.length : 16);
 		for(int i=displacement;i<q;++i){
 			list.add(new ItemStack(id,1,i-displacement));
 		}
@@ -211,10 +209,6 @@ public class BlockFruitSapling extends BlockNH{
 			}
 		}
 		return false;
-	}
-
-	public void setDisplaced(){
-		this.displacement = 16;
 	}
 
 	@Override
