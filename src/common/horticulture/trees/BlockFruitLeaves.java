@@ -78,7 +78,7 @@ public class BlockFruitLeaves extends BlockDisplaced{
 		if(!haswood(w,x,y,z)){
 			this.dropBlockAsItem(w, x, y, z, w.getBlockMetadata(x, y, z), 0);
 			w.setBlockWithNotify(x, y, z, 0);
-		}else if(w.getBlockId(x, y-1, z) == 0){
+		}else if((w.getBlockId(x, y-1, z) == 0)&&(r.nextInt(16) == 0)){
 			w.setBlockAndMetadataWithNotify(x, y-1, z, isDisplaced() ? modnh.blockFruitHanging2.blockID : modnh.blockFruitHanging.blockID, w.getBlockMetadata(x, y, z));
 		}
 	}

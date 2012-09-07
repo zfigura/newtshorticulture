@@ -22,11 +22,9 @@ public class WorldGenFruitTrees extends WorldGenerator{
 			int sap = modnh.blockFruitSapling.blockID;
 			int sap2 = modnh.blockFruitSapling2.blockID;
 			switch(w.getBiomeGenForCoords(x,z).biomeID){
-//			case 2: //desert
 			case 16: //beach
-//			case 17: //desert hills
 				//generate coconut, date, fig
-				switch(r.nextInt(24)){
+				switch(r.nextInt(64)){
 				case 1:
 					w.setBlockAndMetadataWithNotify(x, y, z, sap, 15);
 					break;
@@ -35,9 +33,9 @@ public class WorldGenFruitTrees extends WorldGenerator{
 					break;
 				case 3:
 					w.setBlockAndMetadataWithNotify(x, y, z, sap, 8);
-					modnh.blockFruitSapling.attemptGrowTree(w, x, y, z, r, true);
-					return true;
 				}
+				modnh.blockFruitSapling.attemptGrowTree(w, x, y, z, r, true);
+				return true;
 			case 4: //forest
 			case 18: //foresthills
 				//generate apple, pear, apricot, cherry, peach, plum, mulberry
