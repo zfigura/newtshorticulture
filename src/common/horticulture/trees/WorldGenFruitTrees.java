@@ -22,9 +22,9 @@ public class WorldGenFruitTrees extends WorldGenerator{
 			int sap = modnh.blockFruitSapling.blockID;
 			int sap2 = modnh.blockFruitSapling2.blockID;
 			switch(w.getBiomeGenForCoords(x,z).biomeID){
-			case 2: //desert
+//			case 2: //desert
 			case 16: //beach
-			case 17: //desert hills
+//			case 17: //desert hills
 				//generate coconut, date, fig
 				switch(r.nextInt(24)){
 				case 1:
