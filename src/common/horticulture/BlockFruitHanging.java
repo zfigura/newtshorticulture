@@ -84,4 +84,9 @@ public class BlockFruitHanging extends BlockDisplaced{
 			w.setBlockWithNotify(x, y, z, 0);
 		}
 	}
+	
+	@Override
+	public void onNeighborBlockChange(World w, int x, int y, int z, int id){
+		this.updateTick(w, x, y, z, w.rand);
+	}
 }

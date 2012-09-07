@@ -75,26 +75,31 @@ public class BlockFruitLeaves extends BlockDisplaced{
 	@Override
 	public void updateTick(World w, int x, int y, int z, Random r){
 		super.updateTick(w, x, y, z, r);
+		if(!haswood(w,x,y,z)){
+			this.dropBlockAsItem(w, x, y, z, w.getBlockMetadata(x, y, z), 0);
+			w.setBlockWithNotify(x, y, z, 0);
+		}else if(w.getBlockId(x, y-1, z) == 0){
+			w.setBlockAndMetadataWithNotify(x, y-1, z, isDisplaced() ? modnh.blockFruitHanging2.blockID : modnh.blockFruitHanging.blockID, w.getBlockMetadata(x, y, z));
+		}
+	}
+	
+	public boolean haswood(World w, int x, int y, int z){
 		int radius = 4;
 		int dimsize = 32;
 		int ds2 = dimsize*dimsize;
 		int halfdim = dimsize/2;
 		this.adjacentBlocks = new int[dimsize*dimsize*dimsize];
-		boolean haswood = false;
 		for(int X=-radius;X<=radius;++X){
 			for(int Y=-radius;Y<=radius;++Y){
 				for(int Z=-radius;Z<=radius;++Z){
 					int id = w.getBlockId(x+X, y+Y, z+Z);
 					this.adjacentBlocks[(X+halfdim)*ds2+(Y+halfdim)*dimsize+Z+halfdim] = id;
 					if(id == modnh.blockFruitLog.blockID){
-						haswood = true;
+						return true;
 					}
 				}
 			}
 		}
-		if(!haswood){
-			this.dropBlockAsItem(w, x, y, z, w.getBlockMetadata(x, y, z), 0);
-			w.setBlockWithNotify(x, y, z, 0);
-		}
+		return false;
 	}
 }
