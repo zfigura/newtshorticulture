@@ -12,6 +12,8 @@ import cpw.mods.fml.common.Side;
 import cpw.mods.fml.common.asm.SideOnly;
 
 public class ItemFruit extends ItemFood{
+	
+	public static final String texfile = "items32.png";
 
 	public ItemFruit(int id){
 		super(id,4,false);
@@ -40,6 +42,6 @@ public class ItemFruit extends ItemFood{
 	
 	@Override
 	public String getTextureFile(){
-		return ItemNH.texfile;
+		return texfile;
 	}
 }

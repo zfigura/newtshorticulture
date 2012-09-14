@@ -2,6 +2,7 @@ package horticulture;
 
 import horticulture.mill.BlockMillstones;
 import horticulture.tractors.EntityTractor;
+import horticulture.trees.BlockFruitHanging;
 import horticulture.trees.BlockFruitLeaves;
 import horticulture.trees.BlockFruitLog;
 import horticulture.trees.BlockFruitSapling;
@@ -46,10 +47,10 @@ public final class modnh{
 	public static final String modid = "horticulture";
 	public static final String shortName = "Newt's Horticulture";
 	public static final String version = "Aleph 4.2";
-	public static final String UEVersionRequired = "0.7.0";
+	public static final String UEVersionRequired = "0.8.0";
 	
 	//Now some universal single-instance miscellaneous shtuff.
-	@Instance
+	@Instance(modid)
 	private static modnh instance;
 	@SidedProxy(clientSide="horticulture.NHClientProxy",serverSide="horticulture.NHCommonProxy")
 	public static NHCommonProxy proxy;
@@ -72,7 +73,7 @@ public final class modnh{
 	
 	public static final String[] treeFruits = {"Apple","Pear","Apricot","Cherry","Peach","Plum","Mulberry","Date","Fig","Pomegranate","Kumquat","Lemon","Lime","Orange","Banana","Coconut","Mango","Olive","Pecan"};
 	public static final String[] vineFruits = {"Grape","Honeydew","Vanilla","Cantaloupe"};
-	public static final String[] flowerFruits = {"Strawberry","Peanut","Allspice","Blackberry","Blueberry","Cranberry","Pineapple"};
+	public static final String[] flowerFruits = {"Strawberry","Peanut","Blackberry","Blueberry","Cranberry","Pineapple"};
 	public static final Object[] allFruits;
 	
 	static{
@@ -101,13 +102,11 @@ public final class modnh{
 		GameRegistry.registerBlock(blockFruitSapling, ItemBlockFruitSapling.class);
 		GameRegistry.registerBlock(blockFruitSapling2, ItemBlockFruitSapling.class);
 		GameRegistry.registerBlock(blockFruitLog);
-		//		GameRegistry.registerTileEntity(TileEntityMillstones.class, "TileEntityMillstones");
 		GameRegistry.registerWorldGenerator(new GeneratorFruitTrees());
 		LanguageRegistry.addName(itemExplodingLemon, "Lemon");
 		LanguageRegistry.addName(blockMillstones, "Millstones");
-		ModLoader.registerEntityID(EntityTractor.class, "Tractor", 0);
+		ModLoader.registerEntityID(EntityTractor.class, "Tractor", 77);
 		NetworkRegistry.instance().registerGuiHandler(this, this.proxy);
-		
 		StringTranslate.getInstance().getLanguageList().put("la_RM", "Latina");
 		for(int i=0;i<16;++i){
 			LanguageRegistry.addName(new ItemStack(blockFruitLeaves,1,i), treeFruits[i]+" Tree Branch");

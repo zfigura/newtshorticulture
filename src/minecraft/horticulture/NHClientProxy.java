@@ -7,7 +7,7 @@ import net.minecraft.src.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.registry.ClientRegistry;
 
-public class NHClientProxy extends NHCommonProxy{ //hopefully this is okay
+public class NHClientProxy extends NHCommonProxy{
 	
 	@Override
 	public void init(){

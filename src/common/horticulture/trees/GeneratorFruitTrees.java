@@ -15,7 +15,7 @@ public class GeneratorFruitTrees implements IWorldGenerator{
 		cz <<= 4;
 		if(cg instanceof ChunkProviderGenerate){
 			WorldGenFruitTrees wgft = new WorldGenFruitTrees();
-			for(int i:new int[]{0,1}){
+			for(int i:new int[]{0,1,2,3}){
 				int x = cx+r.nextInt(16);
 				int z = cz+r.nextInt(16);
 				wgft.generate(w, r, x, w.getTopSolidOrLiquidBlock(x, z), z);

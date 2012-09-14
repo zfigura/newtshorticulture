@@ -1,4 +1,7 @@
-package horticulture;
+package horticulture.trees;
+
+import horticulture.BlockDisplaced;
+import horticulture.modnh;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +27,7 @@ public class BlockFruitHanging extends BlockDisplaced{
 	
 	@Override
 	public String getTextureFile(){
-		return "/terrain.png";
+		return ItemFruit.texfile;
 	}
 	
 	@Override

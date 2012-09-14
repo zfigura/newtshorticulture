@@ -16,7 +16,7 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
 import net.minecraft.src.World;
 
-public class BlockFruitSapling extends BlockDisplaced implements IDisplaceable{
+public class BlockFruitSapling extends BlockDisplaced{
 
 public BlockFruitSapling(int id){
 		super(id,Material.plants);

@@ -42,11 +42,6 @@ public class BlockFruitLeaves extends BlockDisplaced{
 	}
 	
 	@Override
-	public boolean isWood(World w, int x, int y, int z){
-		return true;
-	}
-	
-	@Override
 	public void getSubBlocks(int id, CreativeTabs tabs, List list){
 		int q = ((displacement == 16) ? modnh.treeFruits.length : 16);
 		for(int i=displacement;i<q;++i){
