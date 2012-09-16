@@ -46,7 +46,7 @@ public final class modnh{
 	//First, a few constants that have little/no effect on the code.
 	public static final String modid = "horticulture";
 	public static final String shortName = "Newt's Horticulture";
-	public static final String version = "Aleph 4.2";
+	public static final String version = "Beth 1.0";
 	public static final String UEVersionRequired = "0.8.0";
 	
 	//Now some universal single-instance miscellaneous shtuff.
@@ -73,7 +73,7 @@ public final class modnh{
 	
 	public static final String[] treeFruits = {"Apple","Pear","Apricot","Cherry","Peach","Plum","Mulberry","Date","Fig","Pomegranate","Kumquat","Lemon","Lime","Orange","Banana","Coconut","Mango","Olive","Pecan"};
 	public static final String[] vineFruits = {"Grape","Honeydew","Vanilla","Cantaloupe"};
-	public static final String[] flowerFruits = {"Strawberry","Peanut","Blackberry","Blueberry","Cranberry","Pineapple"};
+	public static final String[] flowerFruits = {"Strawberry","Peanut","Blackberry","Blueberry","Cranberry","Allspice","Pineapple"};
 	public static final Object[] allFruits;
 	
 	static{

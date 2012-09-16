@@ -6,6 +6,7 @@ import horticulture.modnh;
 import java.util.List;
 
 import net.minecraft.src.CreativeTabs;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemFood;
 import net.minecraft.src.ItemStack;
 import cpw.mods.fml.common.Side;
@@ -13,7 +14,7 @@ import cpw.mods.fml.common.asm.SideOnly;
 
 public class ItemFruit extends ItemFood{
 	
-	public static final String texfile = "items32.png";
+	public static final String texfile = "/horticulture/textures/items32.png";
 
 	public ItemFruit(int id){
 		super(id,4,false);
@@ -30,7 +31,10 @@ public class ItemFruit extends ItemFood{
 	
 	@Override
 	public int getIconFromDamage(int damage){
-		return 32+damage;
+		if(damage == 0){
+			return 32;
+		}
+		return damage-1;
 	}
 	
 	@SideOnly(Side.CLIENT)

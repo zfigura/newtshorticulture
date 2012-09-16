@@ -157,13 +157,15 @@ public BlockFruitSapling(int id){
 	}
 
 	public boolean canGrowTree(World w, int x, int y, int z, int height, boolean leavesAllowed){
+//		return true;
 		for(int X=x-2;X<x+3;X++){
 			for(int Y=y;Y<y+height+2;Y++){
 				for(int Z=z-2;Z<z+3;Z++){
 					int id = w.getBlockId(X, Y, Z);
 					if(id == 0) continue;
 					if((id == 18)&&(leavesAllowed)) continue;
-					if((Block.blocksList[id].blockMaterial != Material.plants)){
+					if((Block.blocksList[id].blockMaterial != Material.plants)&&(Block.blocksList[id].blockMaterial != Material.vine)){
+						System.out.println(id+","+Block.blocksList[id].blockMaterial.toString());
 						return false;
 					}
 				}

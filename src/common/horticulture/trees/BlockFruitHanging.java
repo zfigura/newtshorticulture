@@ -14,7 +14,7 @@ import net.minecraft.src.World;
 
 public class BlockFruitHanging extends BlockDisplaced{
 
-	protected BlockFruitHanging(int id){
+	public BlockFruitHanging(int id){
 		super(id,Material.plants);
 		this.setTickRandomly(true);
 		this.setCreativeTab(CreativeTabs.tabDeco);

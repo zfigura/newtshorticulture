@@ -58,13 +58,13 @@ public class BlockMillstones extends BlockContainer{
 	}
 
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World w, int x, int y, int z){
-		float size = 0.0625F;
+		float size = 0;
 		return AxisAlignedBB.getAABBPool().addOrModifyAABBInPool((double)((float)x + size), (double)y, (double)((float)z + size), (double)((float)(x + 1) - size), (double)((float)(y + 1) - size), (double)((float)(z + 1) - size));
 	}
 
 	@SideOnly(Side.CLIENT)
 	public AxisAlignedBB getSelectedBoundingBoxFromPool(World w, int x, int y, int z){
-		float size = 0.0625F;
+		float size = 0;
 		return AxisAlignedBB.getAABBPool().addOrModifyAABBInPool((double)((float)x + size), (double)y, (double)((float)z + size), (double)((float)(x + 1) - size), (double)(y + 1), (double)((float)(z + 1) - size));
 	}
 	
