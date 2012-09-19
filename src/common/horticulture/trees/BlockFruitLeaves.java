@@ -7,9 +7,11 @@ import java.util.List;
 import java.util.Random;
 import net.minecraft.src.Block;
 import net.minecraft.src.CreativeTabs;
+import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
 import net.minecraft.src.World;
+import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.IShearable;
 
 public class BlockFruitLeaves extends BlockDisplaced{
@@ -24,6 +26,7 @@ public class BlockFruitLeaves extends BlockDisplaced{
 		this.setRequiresSelfNotify();
 		this.setStepSound(Block.soundGrassFootstep);
 		this.setTickRandomly(true);
+		Block.setBurnProperties(id, 30, 60);
 	}
 
 	@Override
@@ -96,5 +99,15 @@ public class BlockFruitLeaves extends BlockDisplaced{
 			}
 		}
 		return false;
+	}
+	
+	@Override
+	public boolean isFireSource(World world, int x, int y, int z, int metadata, ForgeDirection side){
+		return world.getBlockMetadata(x, y, z) == 9;
+	}
+	
+	@Override
+	public int getFlammability(IBlockAccess world, int x, int y, int z, int metadata, ForgeDirection face){
+		return (world.getBlockMetadata(x, y, z) == 9) ? 0 : 30;
 	}
 }

@@ -32,7 +32,8 @@ public class BlockFruitHanging extends BlockDisplaced{
 	
 	@Override
 	public int getBlockTextureFromSideAndMetadata(int side, int meta){
-		return this.blockIndexInTexture+meta;
+		if(meta == 0) return 32;
+		return meta-1;
 	}
 	
 	@Override

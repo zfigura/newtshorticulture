@@ -70,7 +70,7 @@ public final class modnh{
 	public static final BlockFruitLog blockFruitLog = new BlockFruitLog(getBlockID("blockFruitLog",0x4c5));
 	public static final BlockFruitHanging blockFruitHanging = new BlockFruitHanging(getBlockID("blockFruitHanging",0x4c6));
 	public static final BlockFruitHanging blockFruitHanging2 = new BlockFruitHanging(getBlockID("blockFruitHanging2",0x4c7));
-	
+	//												0		1		2		3		4		5		6			7	 8			9			10		11		12		13		14		15			0		1		2
 	public static final String[] treeFruits = {"Apple","Pear","Apricot","Cherry","Peach","Plum","Mulberry","Date","Fig","Pomegranate","Kumquat","Lemon","Lime","Orange","Banana","Coconut","Mango","Olive","Pecan"};
 	public static final String[] vineFruits = {"Grape","Honeydew","Vanilla","Cantaloupe"};
 	public static final String[] flowerFruits = {"Strawberry","Peanut","Blackberry","Blueberry","Cranberry","Allspice","Pineapple"};

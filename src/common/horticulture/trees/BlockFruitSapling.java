@@ -43,7 +43,7 @@ public BlockFruitSapling(int id){
 
 	@Override
 	public boolean canPlaceBlockAt(World w, int x, int y, int z){
-		return super.canPlaceBlockAt(w, x, y, z) && this.canGrowHere(w,x,y,z);
+		return super.canPlaceBlockAt(w, x, y, z);
 	}
 
 	protected boolean canGrowHere(World w, int x, int y, int z){
@@ -101,7 +101,6 @@ public BlockFruitSapling(int id){
 	}
 
 	public void attemptGrowTree(World w, int x, int y, int z, Random r, boolean leavesAllowed){
-		//		System.out.println("I grew a tree at "+x+","+y+","+z);
 		int q = r.nextInt(10);
 		int height = (q < 4) ? ((q == 1) ? 7 : 6) : 5;
 		if(canGrowTree(w,x,y,z,height,true)){
@@ -157,7 +156,7 @@ public BlockFruitSapling(int id){
 	}
 
 	public boolean canGrowTree(World w, int x, int y, int z, int height, boolean leavesAllowed){
-//		return true;
+		if(w.getBlockMetadata(x, y, z) == 9) return w.getBlockId(x, y-1, z) == Block.netherrack.blockID;
 		for(int X=x-2;X<x+3;X++){
 			for(int Y=y;Y<y+height+2;Y++){
 				for(int Z=z-2;Z<z+3;Z++){
@@ -165,13 +164,12 @@ public BlockFruitSapling(int id){
 					if(id == 0) continue;
 					if((id == 18)&&(leavesAllowed)) continue;
 					if((Block.blocksList[id].blockMaterial != Material.plants)&&(Block.blocksList[id].blockMaterial != Material.vine)){
-						System.out.println(id+","+Block.blocksList[id].blockMaterial.toString());
 						return false;
 					}
 				}
 			}
 		}
-		return (w.getBlockLightValue(x, y, z) > 9)&&(canGrowHere(w,x,y,z));
+		return (w.getBlockLightValue(x, y, z) > 9)&&canGrowHere(w,x,y,z)&&isBiomeCompatible(w,x,y,z);
 	}
 
 	public boolean isBiomeCompatible(World w, int x, int y, int z){
