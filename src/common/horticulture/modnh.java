@@ -2,6 +2,7 @@ package horticulture;
 
 import horticulture.mill.BlockMillstones;
 import horticulture.tractors.EntityTractor;
+import horticulture.tractors.ItemTractor;
 import horticulture.trees.BlockFruitHanging;
 import horticulture.trees.BlockFruitLeaves;
 import horticulture.trees.BlockFruitLog;
@@ -21,7 +22,6 @@ import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.src.ModLoader;
 import net.minecraft.src.StringTranslate;
 import net.minecraftforge.common.Configuration;
 import universalelectricity.UniversalElectricity;
@@ -33,6 +33,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
@@ -62,6 +63,7 @@ public final class modnh{
 	public static final Item itemFruit = new ItemFruit(getItemID("itemFruit",0x4d01));
 	public static final Item itemExplodingLemon = new ItemExplodingLemon(getItemID("itemExplodingLemon",0x4d02));
 	public static final Item itemFlour = new ItemNH(getItemID("itemFlour",0x4d03),"Flour").setIconCoord(2,0);
+	public static final Item itemTractor = new ItemTractor(getItemID("itemTractor",0x4d04));
 	public static final BlockMillstones blockMillstones = new BlockMillstones(getBlockID("blockMillstones",0x4c0));
 	public static final BlockFruitLeaves blockFruitLeaves = new BlockFruitLeaves(getBlockID("blockFruitLeaves",0x4c1));
 	public static final BlockFruitLeaves blockFruitLeaves2 = new BlockFruitLeaves(getBlockID("blockFruitLeaves2",0x4c2));
@@ -105,7 +107,7 @@ public final class modnh{
 		GameRegistry.registerWorldGenerator(new GeneratorFruitTrees());
 		LanguageRegistry.addName(itemExplodingLemon, "Lemon");
 		LanguageRegistry.addName(blockMillstones, "Millstones");
-		ModLoader.registerEntityID(EntityTractor.class, "Tractor", 77);
+		EntityRegistry.registerGlobalEntityID(EntityTractor.class, "Tractor", 77);
 		NetworkRegistry.instance().registerGuiHandler(this, this.proxy);
 		StringTranslate.getInstance().getLanguageList().put("la_RM", "Latina");
 		for(int i=0;i<16;++i){
