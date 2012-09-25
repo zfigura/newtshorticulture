@@ -5,6 +5,7 @@ import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
+import net.minecraftforge.common.ForgeVersion;
 
 public class ItemChisel extends ItemNH{
 	
