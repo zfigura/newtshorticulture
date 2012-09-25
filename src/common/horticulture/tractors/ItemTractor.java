@@ -22,7 +22,7 @@ public class ItemTractor extends ItemNH{
 	public ItemTractor(int id){
 		super(id,"Tractor");
 		this.maxStackSize = 1;
-		this.setTabToDisplayOn(CreativeTabs.tabTransport);
+		this.setCreativeTab(CreativeTabs.tabTransport);
 	}
 
 	public ItemStack onItemRightClick(ItemStack stack, World w, EntityPlayer p){

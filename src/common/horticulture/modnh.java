@@ -25,6 +25,7 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.StringTranslate;
 import net.minecraftforge.common.Configuration;
 import universalelectricity.UniversalElectricity;
+import universalelectricity.basiccomponents.UELoader;
 import universalelectricity.recipe.RecipeManager;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
@@ -38,8 +39,6 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 /**
- * 
- * @author ObsequiousNewt
  */
 @Mod(modid=modnh.modid,name=modnh.shortName,version=modnh.version,dependencies="after:BasicComponents")
 @NetworkMod(clientSideRequired=true,serverSideRequired=false)

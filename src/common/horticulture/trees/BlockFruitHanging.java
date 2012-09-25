@@ -17,7 +17,7 @@ public class BlockFruitHanging extends BlockDisplaced{
 	public BlockFruitHanging(int id){
 		super(id,Material.plants);
 		this.setTickRandomly(true);
-		this.setCreativeTab(CreativeTabs.tabDeco);
+		this.setCreativeTab(CreativeTabs.tabDecorations);
 	}
 
 	@Override

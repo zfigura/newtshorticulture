@@ -11,7 +11,7 @@ public class ItemExplodingLemon extends ItemFood{
 
 	public ItemExplodingLemon(int id){
 		super(id,2,false);
-		this.setTabToDisplayOn(CreativeTabs.tabFood);
+		this.setCreativeTab(CreativeTabs.tabFood);
 		this.setItemName("Lemon");
 		this.setIconCoord(7,0);
 		this.setAlwaysEdible();

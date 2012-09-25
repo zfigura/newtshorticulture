@@ -20,7 +20,7 @@ public class ItemFruit extends ItemFood{
 		super(id,4,false);
 		this.setHasSubtypes(true);
 		this.setMaxDamage(0);
-		this.setTabToDisplayOn(CreativeTabs.tabFood);
+		this.setCreativeTab(CreativeTabs.tabFood);
 		this.setItemName("itemFruit");
 	}
 

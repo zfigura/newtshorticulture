@@ -21,7 +21,7 @@ public class BlockFruitSapling extends BlockDisplaced{
 public BlockFruitSapling(int id){
 		super(id,Material.plants);
 		this.setTickRandomly(true);
-		this.setCreativeTab(CreativeTabs.tabDeco);
+		this.setCreativeTab(CreativeTabs.tabDecorations);
 		float size = .4f;
 		this.setBlockBounds(0.5F - size, 0.0F, 0.5F - size, 0.5F + size, size * 2.0F, 0.5F + size);
 	}
