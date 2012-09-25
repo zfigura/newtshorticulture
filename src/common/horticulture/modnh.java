@@ -92,7 +92,6 @@ public final class modnh{
 	@Init
 	public void load(FMLInitializationEvent event){
 		proxy.init();
-		UniversalElectricity.registerMod(this, shortName, UEVersionRequired);
 		RecipeManager.addRecipe(itemChisel, new Object[]{"!","\"",'!',Item.stick,'"',Item.ingotIron});
 		RecipeManager.addShapelessRecipe(blockMillstones,new Object[]{itemChisel,Block.stoneSingleSlab,Block.stoneSingleSlab});
 		RecipeManager.addShapelessRecipe(itemExplodingLemon, new Object[]{Block.tnt,new ItemStack(itemFruit,1,11)});

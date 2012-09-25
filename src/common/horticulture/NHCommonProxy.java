@@ -1,11 +1,11 @@
 package horticulture;
 
+import horticulture.mill.ContainerMillstones;
+import horticulture.mill.TileEntityMillstones;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
-import horticulture.mill.ContainerMillstones;
-import horticulture.mill.TileEntityMillstones;
-import universalelectricity.extend.CommonProxy;
+import universalelectricity.prefab.CommonProxy;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class NHCommonProxy extends CommonProxy{
