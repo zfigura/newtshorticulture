@@ -8,12 +8,6 @@ public class ItemNH extends Item{
 	
 	public static final String texfile = "/horticulture/textures/items.png";
 
-	public ItemNH(int id){
-		super(id);
-		this.setItemName(getName());
-		ModLoader.addName(this,getName());
-	}
-	
 	public ItemNH(int id, String name){
 		super(id);
 		this.setItemName(name);
@@ -23,9 +17,5 @@ public class ItemNH extends Item{
 	@Override
 	public String getTextureFile(){
 		return texfile;
-	}
-	
-	public String getName(){
-		return null;
 	}
 }

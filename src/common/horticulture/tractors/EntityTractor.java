@@ -58,7 +58,6 @@ public class EntityTractor extends Entity{
 	@Override
 	public boolean attackEntityFrom(DamageSource ds, int q){
 		super.attackEntityFrom(ds, q);
-		//TODO
 		return true;
 	}
 

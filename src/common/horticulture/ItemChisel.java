@@ -10,13 +10,8 @@ import net.minecraftforge.common.ForgeVersion;
 public class ItemChisel extends ItemNH{
 	
 	ItemChisel(int id){
-		super(id);
+		super(id,"Chisel");
 		this.setCreativeTab(CreativeTabs.tabTools);
-	}
-	
-	@Override
-	public String getName() {
-		return "Chisel";
 	}
 	
 	@Override

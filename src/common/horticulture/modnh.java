@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import net.minecraft.src.Block;
+import net.minecraft.src.Chunk;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.Item;
@@ -25,7 +26,6 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.StringTranslate;
 import net.minecraftforge.common.Configuration;
 import universalelectricity.UniversalElectricity;
-import universalelectricity.basiccomponents.UELoader;
 import universalelectricity.recipe.RecipeManager;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
@@ -121,6 +121,7 @@ public final class modnh{
 			LanguageRegistry.addName(new ItemStack(itemFruit,1,i), (String) allFruits[i]);
 		}
 		System.out.println("Now comes with built-in Latin support!");
+		Chunk q = null;
 	}
 	
 	public static modnh getInstance(){
