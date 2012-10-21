@@ -25,7 +25,7 @@ import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.StringTranslate;
 import net.minecraftforge.common.Configuration;
-import universalelectricity.UniversalElectricity;
+import universalelectricity.UEConfig;
 import universalelectricity.recipe.RecipeManager;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
@@ -129,11 +129,11 @@ public final class modnh{
 	}
 	
 	public static int getItemID(String name,int def){
-		return UniversalElectricity.getItemConfigID(config, name, def);
+		return UEConfig.getItemConfigID(config, name, def);
 	}
 	
 	public static int getBlockID(String name,int def){
-		return UniversalElectricity.getBlockConfigID(config, name, def);
+		return UEConfig.getBlockConfigID(config, name, def);
 	}
 	
 	public void takenFromCrafting(EntityPlayer p,ItemStack i,IInventory inv){

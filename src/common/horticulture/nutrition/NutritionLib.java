@@ -24,7 +24,6 @@ public final class NutritionLib{
 	public static void decreaseAllNutritionLevels(EntityPlayerMP player){
 		//TODO
 		Nutrients ns = getNutrientLevels(player);
-		
 	}
 
 	public static Nutrients getNutrientLevels(EntityPlayerMP player){

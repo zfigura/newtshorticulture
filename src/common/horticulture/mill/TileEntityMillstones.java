@@ -22,7 +22,7 @@ public class TileEntityMillstones extends TileEntity implements IPacketReceiver,
 	private ItemStack[] inv = new ItemStack[2];
 
 	@Override
-	public void handlePacketData(NetworkManager network, Packet250CustomPayload packet, EntityPlayer player, ByteArrayDataInput dataStream){
+	public void handlePacketData(NetworkManager network, int type, Packet250CustomPayload packet, EntityPlayer player, ByteArrayDataInput dataStream){
 		int id = dataStream.readInt();
 		switch(id){
 		case -1:

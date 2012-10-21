@@ -1,6 +1,7 @@
 package horticulture.nutrition;
 
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  * This represents individual doses of nutrients. If
@@ -13,7 +14,7 @@ import java.util.HashMap;
  */
 public final class Nutrients{
 	
-	private HashMap<INutrient,Float> map = new HashMap<INutrient,Float>();
+	private final HashMap<INutrient,Float> map = new HashMap<INutrient,Float>();
 	
 	public Nutrients(){
 		
@@ -31,6 +32,10 @@ public final class Nutrients{
 	public Nutrients addNutrient(INutrient type, float amount){
 		map.put(type, amount);
 		return this;
+	}
+	
+	public Set<INutrient> getNutrients(){
+		return map.keySet();
 	}
 	
 	public float getNutrientAmount(INutrient type){
