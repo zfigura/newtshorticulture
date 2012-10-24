@@ -47,7 +47,7 @@ public final class modnh{
 	public static final String modid = "horticulture";
 	public static final String shortName = "Newt's Horticulture";
 	public static final String version = "Beth 1.2";
-	public static final String UEVersionRequired = "0.8.5";
+	public static final String UEVersionRequired = "0.9.3";
 	
 	//Now some universal single-instance miscellaneous shtuff.
 	@Instance(modid)

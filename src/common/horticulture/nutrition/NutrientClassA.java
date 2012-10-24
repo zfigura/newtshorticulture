@@ -10,28 +10,27 @@ import net.minecraft.src.EntityPlayerMP;
 public class NutrientClassA implements INutrient{
 	
 	public final String ID;
-	public final float minValue;
+	public final float DV;
 	
-	public NutrientClassA(String id, float min){
+	public NutrientClassA(String id, float dv){
 		this.ID = id;
-		this.minValue = min;
+		this.DV = dv;
 	}
 
 	@Override
 	public void onNutritionLevelUpdate(float value, EntityPlayerMP player){
-		
+		if(value<0){
+			//trigger deficiency symptoms
+		}
 	}
 
 	@Override
 	public float getAmountToDecrease(float currentvalue, EntityPlayerMP player){
-		// TODO Auto-generated method stub
-		return 0;
+		return (float)DV/(float)24000;
 	}
 
 	@Override
-	public String getID() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getID(){
+		return ID;
 	}
-
 }

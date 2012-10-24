@@ -30,4 +30,8 @@ public final class NutritionLib{
 		//TODO
 		return null;
 	}
+	
+	public static void createAndRegisterClassA(String id, float dv){
+		registerNutrient(new NutrientClassA(id,dv));
+	}
 }

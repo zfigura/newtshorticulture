@@ -24,9 +24,18 @@ public final class NutritionLibProxy{
 	
 	public static void applyNutrients(EntityPlayerMP p, INutrientProvider obj){
 		try{
-			nh.getMethod("applyNutrients", EntityPlayerMP.class, INutrientProvider.class).invoke(null, obj);
+			nh.getMethod("applyNutrients", EntityPlayerMP.class, INutrientProvider.class).invoke(null, p, obj);
 		}catch(Exception e){
 			e.printStackTrace(System.out);
+		}
+	}
+	
+	public static Object getNutrientLevels(EntityPlayerMP p){
+		try{
+			return nh.getMethod("getNutrientLevels", EntityPlayerMP.class).invoke(null, p);
+		}catch(Exception e){
+			e.printStackTrace(System.out);
+			return null;
 		}
 	}
 }
