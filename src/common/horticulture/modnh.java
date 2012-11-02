@@ -1,17 +1,18 @@
 package horticulture;
 
+import horticulture.fruit.GeneratorFruitTrees;
+import horticulture.fruit.ItemExplodingLemon;
+import horticulture.fruit.ItemFruit;
+import horticulture.fruit.flower.BlockFruitFlower;
+import horticulture.fruit.trees.BlockFruitHanging;
+import horticulture.fruit.trees.BlockFruitLeaves;
+import horticulture.fruit.trees.BlockFruitLog;
+import horticulture.fruit.trees.BlockFruitSapling;
+import horticulture.fruit.trees.ItemBlockFruitLeaves;
+import horticulture.fruit.trees.ItemBlockFruitSapling;
 import horticulture.mill.BlockMillstones;
 import horticulture.tractors.EntityTractor;
 import horticulture.tractors.ItemTractor;
-import horticulture.trees.BlockFruitHanging;
-import horticulture.trees.BlockFruitLeaves;
-import horticulture.trees.BlockFruitLog;
-import horticulture.trees.BlockFruitSapling;
-import horticulture.trees.GeneratorFruitTrees;
-import horticulture.trees.ItemBlockFruitLeaves;
-import horticulture.trees.ItemBlockFruitSapling;
-import horticulture.trees.ItemExplodingLemon;
-import horticulture.trees.ItemFruit;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ public final class modnh{
 	//First, a few constants that have little/no effect on the code.
 	public static final String modid = "horticulture";
 	public static final String shortName = "Newt's Horticulture";
-	public static final String version = "Beth 1.2";
+	public static final String version = "Beth 1.5";
 	public static final String UEVersionRequired = "0.9.3";
 	
 	//Now some universal single-instance miscellaneous shtuff.
@@ -71,10 +72,12 @@ public final class modnh{
 	public static final BlockFruitLog blockFruitLog = new BlockFruitLog(getBlockID("blockFruitLog",0x4c5));
 	public static final BlockFruitHanging blockFruitHanging = new BlockFruitHanging(getBlockID("blockFruitHanging",0x4c6));
 	public static final BlockFruitHanging blockFruitHanging2 = new BlockFruitHanging(getBlockID("blockFruitHanging2",0x4c7));
+	public static final BlockFruitFlower blockFruitFlower = new BlockFruitFlower(getBlockID("blockFruitFlower",0x4c8));
 	//												0		1		2		3		4		5		6			7	 8			9			10		11		12		13		14		15			0		1		2
 	public static final String[] treeFruits = {"Apple","Pear","Apricot","Cherry","Peach","Plum","Mulberry","Date","Fig","Pomegranate","Kumquat","Lemon","Lime","Orange","Banana","Coconut","Mango","Olive","Pecan"};
 	public static final String[] vineFruits = {"Grape","Honeydew","Vanilla","Cantaloupe"};
-	public static final String[] flowerFruits = {"Strawberry","Peanut","Blackberry","Blueberry","Cranberry","Allspice","Pineapple"};
+	//												0			1			2			3			4			5
+	public static final String[] flowerFruits = {"Strawberry","Peanut","Blackberry","Blueberry","Cranberry","Pineapple"};
 	public static final Object[] allFruits;
 	
 	static{

@@ -1,11 +1,11 @@
 package horticulture;
 
+import horticulture.fruit.ItemFruit;
 import horticulture.mill.GUIMillstones;
 import horticulture.mill.RenderMillstones;
 import horticulture.mill.TileEntityMillstones;
 import horticulture.tractors.EntityTractor;
 import horticulture.tractors.RenderTractor;
-import horticulture.trees.ItemFruit;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.RenderManager;
 import net.minecraft.src.TileEntity;

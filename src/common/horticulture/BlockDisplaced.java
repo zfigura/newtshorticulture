@@ -6,8 +6,8 @@ public abstract class BlockDisplaced extends BlockNH implements IDisplaceable{
 	
 	protected int displacement;
 
-	protected BlockDisplaced(int id, Material material){
-		super(id, material);
+	protected BlockDisplaced(int id, Material material, String name){
+		super(id, material,name);
 	}
 	
 	@Override

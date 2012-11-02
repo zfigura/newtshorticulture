@@ -8,16 +8,14 @@ public abstract class BlockNH extends Block{
 
 	public static final String texfile = "/horticulture/textures/blocks.png";
 
-	protected BlockNH(int id,Material material){
+	protected BlockNH(int id,Material material,String name){
 		super(id,material);
-		this.setBlockName(getName());
-		ModLoader.addName(this, getName());
+		this.setBlockName(name);
+		ModLoader.addName(this, name);
 	}
 	
 	@Override
 	public String getTextureFile(){
 		return texfile;
 	}
-	
-	public abstract String getName();
 }
