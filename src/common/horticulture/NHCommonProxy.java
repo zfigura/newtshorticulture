@@ -5,12 +5,11 @@ import horticulture.mill.TileEntityMillstones;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
-import universalelectricity.prefab.CommonProxy;
+import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class NHCommonProxy extends CommonProxy{
+public class NHCommonProxy implements IGuiHandler{
 
-	@Override
 	public void init(){
 		GameRegistry.registerTileEntity(TileEntityMillstones.class, "TileEntityMillstones");
 		System.out.println("NH Common Proxy loading");
@@ -25,6 +24,11 @@ public class NHCommonProxy extends CommonProxy{
 				return new ContainerMillstones(p.inventory,(TileEntityMillstones) entity);
 			}
 		}
+		return null;
+	}
+
+	@Override
+	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		return null;
 	}
 }

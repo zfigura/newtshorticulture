@@ -21,7 +21,7 @@ public class ItemExplodingLemon extends ItemFood{
 	
 	@Override
 	protected void func_77849_c(ItemStack stack, World w, EntityPlayer p){
-		w.createExplosion(null, p.posX, p.posY, p.posZ, 10);
+		w.createExplosion(null, p.posX, p.posY, p.posZ, 10, false);
 		p.setEntityHealth(0);
 	}
 }

@@ -15,7 +15,6 @@ public class GUIMillstones extends GuiContainer{
 		this.entity = entity;
 	}
 	
-	@Override
 	protected void drawGuiContainerForegroundLayer(){
 		this.fontRenderer.drawString("Millstones", 60, 6, 4210752);
 	}

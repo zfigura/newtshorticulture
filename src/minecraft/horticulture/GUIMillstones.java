@@ -1,13 +1,11 @@
 package horticulture;
 
-import org.lwjgl.opengl.GL11;
-
-import universalelectricity.basiccomponents.BasicComponents;
-import universalelectricity.network.PacketManager;
 import horticulture.mill.ContainerMillstones;
 import horticulture.mill.TileEntityMillstones;
 import net.minecraft.src.GuiContainer;
 import net.minecraft.src.InventoryPlayer;
+
+import org.lwjgl.opengl.GL11;
 
 public class GUIMillstones extends GuiContainer{
 
@@ -19,7 +17,6 @@ public class GUIMillstones extends GuiContainer{
 		this.entity = entity;
 	}
 	
-	@Override
 	protected void drawGuiContainerForegroundLayer(){
 		this.fontRenderer.drawString("Millstones", 60, 6, 4210752);
 	}

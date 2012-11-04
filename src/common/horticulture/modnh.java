@@ -26,8 +26,7 @@ import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.StringTranslate;
 import net.minecraftforge.common.Configuration;
-import universalelectricity.UEConfig;
-import universalelectricity.recipe.RecipeManager;
+import universalelectricity.core.UEConfig;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -94,10 +93,10 @@ public final class modnh{
 	@Init
 	public void load(FMLInitializationEvent event){
 		proxy.init();
-		RecipeManager.addRecipe(itemChisel, new Object[]{"!","\"",'!',Item.stick,'"',Item.ingotIron});
-		RecipeManager.addShapelessRecipe(blockMillstones,new Object[]{itemChisel,Block.stoneSingleSlab,Block.stoneSingleSlab});
-		RecipeManager.addShapelessRecipe(itemExplodingLemon, new Object[]{Block.tnt,new ItemStack(itemFruit,1,11)});
-		RecipeManager.addShapelessRecipe(new ItemStack(Block.planks,2),new Object[]{blockFruitLog});
+		GameRegistry.addRecipe(new ItemStack(itemChisel), new Object[]{"!","\"",'!',Item.stick,'"',Item.ingotIron});
+		GameRegistry.addShapelessRecipe(new ItemStack(blockMillstones),new Object[]{itemChisel,Block.stoneSingleSlab,Block.stoneSingleSlab});
+		GameRegistry.addShapelessRecipe(new ItemStack(itemExplodingLemon), new Object[]{Block.tnt,new ItemStack(itemFruit,1,11)});
+		GameRegistry.addShapelessRecipe(new ItemStack(Block.planks,2),new Object[]{blockFruitLog});
 		GameRegistry.registerCraftingHandler(craftingHandler);
 		GameRegistry.registerBlock(blockMillstones);
 		GameRegistry.registerBlock(blockFruitLeaves, ItemBlockFruitLeaves.class);

@@ -16,7 +16,7 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
 import net.minecraft.src.World;
 
-public class BlockFruitFlower extends BlockNH {
+public class BlockFruitFlower extends BlockNH{
 
 	public BlockFruitFlower(int id){
 		super(id, Material.plants,"blockFruitFlower");
