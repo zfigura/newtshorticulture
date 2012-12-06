@@ -15,8 +15,10 @@ public class WorldGenFruitTrees{
 
 	public boolean generate(World w, Random r, int x, int y, int z, boolean isPomegranate){
 		if(!modnh.blockFruitSapling2.canGrowTree(w,x,y,z,7,true) && !isPomegranate){
+			System.out.println("bar");
 			return false;
 		}else{
+			System.out.println("Foo");
 			int sap = modnh.blockFruitSapling.blockID;
 			int sap2 = modnh.blockFruitSapling2.blockID;
 			switch(w.getBiomeGenForCoords(x,z).biomeID){
@@ -67,7 +69,6 @@ public class WorldGenFruitTrees{
 				}
 				return true;
 			case 8:
-				System.out.println("Attempting to generate a tree at "+x+","+y+","+z);
 				w.setBlockAndMetadataWithNotify(x, y, z, sap, 9);
 				modnh.blockFruitSapling.attemptGrowTree(w, x, y, z, r, true);
 				return true;

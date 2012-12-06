@@ -26,7 +26,7 @@ import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.StringTranslate;
 import net.minecraftforge.common.Configuration;
-import universalelectricity.core.UEConfig;
+import net.minecraftforge.common.Property;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -40,14 +40,13 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 
 /**
  */
-@Mod(modid=modnh.modid,name=modnh.shortName,version=modnh.version,dependencies="after:BasicComponents")
+@Mod(modid=modnh.modid,name=modnh.shortName,version=modnh.version)
 @NetworkMod(clientSideRequired=true,serverSideRequired=false)
 public final class modnh{
 	//First, a few constants that have little/no effect on the code.
 	public static final String modid = "horticulture";
 	public static final String shortName = "Newt's Horticulture";
 	public static final String version = "Beth 1.5";
-	public static final String UEVersionRequired = "0.9.3";
 	
 	//Now some universal single-instance miscellaneous shtuff.
 	@Instance(modid)
@@ -131,11 +130,16 @@ public final class modnh{
 	}
 	
 	public static int getItemID(String name,int def){
-		return UEConfig.getItemConfigID(config, name, def);
+		config.load();
+		Property q = config.get(Configuration.CATEGORY_ITEM, name, def-256);
+		config.save();
+		return q.getInt(def-256);
 	}
 	
 	public static int getBlockID(String name,int def){
-		return UEConfig.getBlockConfigID(config, name, def);
+		config.load();
+		Property q = config.get(Configuration.CATEGORY_BLOCK, name, def);
+		return q.getInt(def);
 	}
 	
 	public void takenFromCrafting(EntityPlayer p,ItemStack i,IInventory inv){
