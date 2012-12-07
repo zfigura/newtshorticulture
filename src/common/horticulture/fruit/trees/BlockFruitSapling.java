@@ -164,7 +164,6 @@ public BlockFruitSapling(int id){
 				}
 			}
 		}
-		System.out.println("I have room for a tree");
 		return (w.getBlockLightValue(x, y, z) > 9)&&canGrowHere(w,x,y,z)&&isBiomeCompatible(w,x,y,z);
 	}
 
